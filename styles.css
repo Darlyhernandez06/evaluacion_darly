@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffb3ff;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    background-color: #ab03ab;
+    border-radius: 5px;
+}
+
+.navigation {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px #FF00FF;
+    color: #000000;
+    padding: 20px;
+}
+.navigation h1 {
+    margin: 0 0 10px;
+}
+
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation li {
+    margin-bottom: 10px;
+    background-color: #ffb3ff;
+    border-radius: 5px;
+}
+
+.navigation a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    background-color: #ab03ab;
+}
