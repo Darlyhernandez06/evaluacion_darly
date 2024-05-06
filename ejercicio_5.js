@@ -42,16 +42,21 @@ class Calculadora {
 
 // Función para solicitar un número al usuario
 function solicitarNumero(mensaje) {
-    let input = prompt(mensaje);
-    if (input === null || input.trim() === "") {
-        throw new Error('No se ingresó un número.');
+    while (true) {
+        let input = prompt(mensaje);
+        if (input === null) {
+            throw new Error('Se canceló la operación.');
+        }
+        let num = parseFloat(input);
+        if (!isNaN(num)) {
+            return num;
+        }
+        alert('No se ingresó un número válido.');
     }
-    let num = parseFloat(input);
-    if (isNaN(num)) {
-        throw new Error('No se ingresó un número válido.');
-    }
-    return num;
 }
+
+// Crear una instancia de la calculadora
+const miCalculadora = new Calculadora();
 
 // Solicitar al usuario que ingrese los números
 let num1, num2;
@@ -64,35 +69,15 @@ try {
     throw error;
 }
 
-// Crear una instancia de la calculadora
-const miCalculadora = new Calculadora();
-
-// Solicitar al usuario la operación a realizar
-let operacion = prompt("¿Qué operación desea realizar?\n(a) Suma\n(b) Resta\n(c) Multiplicación\n(d) División");
-
-// Realizar la operación correspondiente y mostrar el resultado
+// Realizar operaciones con la calculadora
 try {
-    let resultado;
-    switch (operacion) {
-        case 'a':
-            resultado = miCalculadora.suma(num1, num2);
-            break;
-        case 'b':
-            resultado = miCalculadora.resta(num1, num2);
-            break;
-        case 'c':
-            resultado = miCalculadora.multiplicacion(num1, num2);
-            break;
-        case 'd':
-            resultado = miCalculadora.division(num1, num2);
-            break;
-        default:
-            throw new Error('Operación no válida.');
-    }
-    alert("El resultado es: " + resultado);
+    console.log("Suma:", miCalculadora.suma(num1, num2));
+    console.log("Resta:", miCalculadora.resta(num1, num2));
+    console.log("Multiplicación:", miCalculadora.multiplicacion(num1, num2));
+    console.log("División:", miCalculadora.division(num1, num2));
 } catch (error) {
-    alert("Error: " + error.message);
+    alert("Error al realizar la operación: " + error.message);
 }
 
-// Exportar las funciones que deseamos utilizar
+// Exportar la clase Calculadora y la función para solicitar números
 export { Calculadora, solicitarNumero };
